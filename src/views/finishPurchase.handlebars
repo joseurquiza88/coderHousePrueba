@@ -1,0 +1,21 @@
+
+    <h1>Compra exitosa!</h1>
+   <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/api/products">Volver</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <strong>ID:</strong> {{_id}} <br>
+            <strong>Código:</strong> {{code}} <br>
+            <strong>Fecha de Compra:</strong> {{purchase_datetime}} <br>
+            <strong>Total:</strong> {{amount}} <br>
+            <strong>Usuario:</strong> {{purchaser}} <br>
+            <a  class="btn btn-info m-2 ml-10 "  href="/api/products">Lista de productos</a>
+        </li>
+    </ul>

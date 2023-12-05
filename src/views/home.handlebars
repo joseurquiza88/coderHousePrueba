@@ -1,0 +1,76 @@
+<div> 
+    <div class="welcome-message d-flex align-items-center">
+        <img src="http://localhost:8080/{{showAvatar}}"   alt="Avatar" width="50" height="50" class="img-fluid rounded-circle mt-3"> 
+
+        {{#if user}}
+        <lu>
+            <p>Usuario: {{user.user.user.email}}</p>
+            <p>Rol: {{user.user.user.role}}</p>
+            <p> Id: {{user.user.user._id}}</p>
+        </lu>
+            <button type="button" class="btn btn-info cart-button"  id="{{user.user.user.cart}}"> Carrito</button>
+            <a id="profile-button" class="btn btn-info m-2 ml-10 "  href="/api/users/{{user.user.user._id}}/profile">Perfil</a> 
+            <a id="socket-button" class="btn btn-info m-2 ml-10 "  href="/chat">ChatBox</a>
+        {{/if}}
+        {{#if showEditProduct}}
+            <a type="button" class="btn btn-info m-2"   href="/api/updateproducts">Editar productos</a>
+        {{/if}}
+         {{#if showChangeRole}}
+            <button type="button" class="btn btn-info change-role-button m-2" id="{{user.user.user._id}}" > Editar productos</button>
+        {{/if}}
+
+        <a  id="logout-button"  class="btn btn-info m-4 ml-10 ">Cerrar Sesión</a>
+    </div>
+   
+    <div id="product-list" class="d-flex flex-row flex-wrap">
+    {{#each products}}
+     <div class="card m-2 mb-10 p-5">
+        <div class="card-body">
+          <h2 class="card-title">{{this.name}}</h2>
+          <p class="card-text">Categoría: {{category}}</p>
+          <p class="card-text">Descripcion: {{description}}</p>
+          <p class="card-text">Disponibilidad: {{availability}}</p>
+          <p class="card-text">Precio: {{price}}</p>
+          <div id= "{{user.user.user.cart}}" >  
+          <button type="button" class="btn btn-info button-add-to-cart m-1" id="{{_id}}">Agregar al Carrito</button>
+          </div>
+          <button type="button" class="btn btn-info view-details-button m-1" id="{{_id}}">Detalles</button> 
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+<div id="paginated">
+  <p>Page {{ pagination.currentPage }} of {{ pagination.totalPages }}</p>
+
+  {{#if pagination.hasPrevPage}}
+    <a href="{{ pagination.prevLink }}">Anterior</a>
+  {{/if}}
+
+  {{#if pagination.hasNextPage}}
+    <a href="{{ pagination.nextLink }}">Siguiente</a>
+  {{/if}}
+
+
+</div>
+
+{{!-- 
+  <div id="paginated">
+    <p>Page {{ pagination.currentPage }} of {{ pagination.totalPages }}</p>
+  
+      {{#if pagination.hasPrevPage}}
+        <a href="{{ pagination.prevLink }}">Anterior</a>
+      {{/if}}
+  
+       {{#if pagination.hasNextPage}}
+        <a href="{{ pagination.nextLink }}">Siguiente</a>
+      {{/if}}
+  </div> --}}
+
+</div>
+ 
+ <script src="/js/product.js"></script>
+ <script src="/js/logout.js"></script>
+  <script src="/js/cart.js"></script>
+   <script src="/js/updateproducts.js"></script>
+   <script src="/js/changeRol.js"></script>
